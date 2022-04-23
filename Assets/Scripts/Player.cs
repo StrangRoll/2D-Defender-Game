@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public int Money { get; private set; }
 
     public event UnityAction<int, int> HealthChaged;
+    public event UnityAction<int> MoneyChaged;
 
     private void Start()
     {
@@ -51,11 +52,13 @@ public class Player : MonoBehaviour
     public void AddMoney(int reward)
     {
         Money += reward;
+        MoneyChaged?.Invoke(Money);
     }
 
     public void BuyWeapon(Weapon weapon)
     {
         Money -= weapon.Price;
         _weapon.Add(weapon);
+        MoneyChaged?.Invoke(Money);
     }
 }

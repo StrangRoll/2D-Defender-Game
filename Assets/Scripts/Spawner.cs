@@ -12,11 +12,11 @@ public class Spawner : MonoBehaviour
     private Wave _currentWave;
     private int _currentWaveIndex;
     private float _timeAfterLastSpawn;
-    private int _spawned;
     private int _killed;
+    private int _spawned;
 
-    public event UnityAction AllEnemiesSpawned;
-    public event UnityAction<int, int> EnemyCountChanged;
+    public event UnityAction AllEnemiesKilled;
+    public event UnityAction<int, int> DeadEnemyCountChanged;
 
     private void Start()
     {
@@ -29,18 +29,11 @@ public class Spawner : MonoBehaviour
             return;
         _timeAfterLastSpawn += Time.deltaTime;  
 
-        if (_timeAfterLastSpawn >= _currentWave.Delay)
+        if (_timeAfterLastSpawn >= _currentWave.Delay && _spawned < _currentWave.Count)
         {
             InstantiateEnemy();
-            _spawned++;
             _timeAfterLastSpawn = 0;
-            EnemyCountChanged?.Invoke(_spawned, _currentWave.Count);
-            if (_spawned >= _currentWave.Count)
-            {
-                if (_waves.Count > _currentWaveIndex + 1)
-                    AllEnemiesSpawned?.Invoke();
-                _currentWave = null;
-            }
+            _spawned++;
         }
     }
 
@@ -52,9 +45,10 @@ public class Spawner : MonoBehaviour
     }
 
     private void SetWave(int index)
-    {
+    { 
+        _killed = 0;
         _spawned = 0;
-        EnemyCountChanged?.Invoke(0, 1);
+        DeadEnemyCountChanged?.Invoke(0, 1);
         _currentWave = _waves[index];
         _currentWaveIndex = index;
     }
@@ -67,7 +61,16 @@ public class Spawner : MonoBehaviour
     private void OnEnemyDying(Enemy enemy)
     {
         enemy.Dying -= OnEnemyDying;
+        _killed++;
+        DeadEnemyCountChanged?.Invoke(_killed, _currentWave.Count);
         _player.AddMoney(enemy.Reward);
+
+        if (_killed >= _currentWave.Count)
+        {
+            if (_waves.Count > _currentWaveIndex + 1)
+                AllEnemiesKilled?.Invoke();
+            _currentWave = null;
+        }    
     }
 }
 

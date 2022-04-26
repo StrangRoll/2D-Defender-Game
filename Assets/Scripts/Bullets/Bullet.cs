@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
@@ -14,10 +14,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Enemy enemy))
-        {
-            enemy.TakeDamage(_damage);
+        if (collision.gameObject.TryGetComponent<LevelBound>(out LevelBound levelBound))
             Destroy(gameObject);
-        }
+        Hit(collision, _damage);
     }
+
+    protected abstract void Hit(Collider2D collision, int damage);
+  
 }

@@ -7,10 +7,11 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _health;
-    [SerializeField] private List<Weapon> _weapon;
+    [SerializeField] private List<Weapon> _weapons;
     [SerializeField] private Transform _shootPoint;
 
     private Weapon _currentWeapon;
+    private int _currentWeaponIndex = 0;
     private int _currentHealth;
     private Animator _animator;
 
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _currentWeapon = _weapon[0];
+        ChangeWeapon(_weapons[_currentWeaponIndex]);
         _currentHealth = _health;
         _animator = GetComponent<Animator>();
     }
@@ -58,7 +59,30 @@ public class Player : MonoBehaviour
     public void BuyWeapon(Weapon weapon)
     {
         Money -= weapon.Price;
-        _weapon.Add(weapon);
+        _weapons.Add(weapon);
         MoneyChaged?.Invoke(Money);
+    }
+
+    public void NextWeapon()
+    {
+        if (_currentWeaponIndex >= _weapons.Count - 1)
+            _currentWeaponIndex = 0;
+        else
+            _currentWeaponIndex++;
+        ChangeWeapon(_weapons[_currentWeaponIndex]);
+    }
+
+    public void PreviousWeapon()
+    {
+        if (_currentWeaponIndex <= 0)
+            _currentWeaponIndex = _weapons.Count - 1;
+        else
+            _currentWeaponIndex--;
+        ChangeWeapon(_weapons[_currentWeaponIndex]);
+    }
+
+    private void ChangeWeapon(Weapon weapon)
+    {
+        _currentWeapon = weapon;
     }
 }

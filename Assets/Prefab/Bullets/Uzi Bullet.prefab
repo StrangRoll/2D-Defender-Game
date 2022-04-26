@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7241623110872891710}
   - component: {fileID: -5441741075631635198}
   - component: {fileID: 2756059100975254414}
-  - component: {fileID: -2022859286551077549}
+  - component: {fileID: 4241431931795224105}
   m_Layer: 0
-  m_Name: Pistol Bullet
+  m_Name: Uzi Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-2022859286551077549
+--- !u!114 &4241431931795224105
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52781df3b2fb3a64dbcbc2622e1d1454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 2
-  _speed: 5
+  _damage: 1
+  _speed: 7

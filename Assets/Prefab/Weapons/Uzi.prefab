@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6182977127872746021}
-  - component: {fileID: 5708504137410628674}
+  - component: {fileID: -875506132305381747}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Uzi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5708504137410628674
+--- !u!114 &-875506132305381747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6511815940332424261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e03891dbfead1458651d6762696992, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d79d320d9703054c921c59bdfe6ac85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
-  _price: 0
-  _icon: {fileID: 21300000, guid: deafdaa13e8c26442af3522d064ff550, type: 3}
+  _label: "\u0423\u0437\u0438"
+  _price: 300
+  _icon: {fileID: 21300000, guid: 8b6fd22b822ff274f91681acdfc4340b, type: 3}
   _isBuyed: 0
-  Bullet: {fileID: -2022859286551077549, guid: 2a856efe0eadbb74cb08a4205a9dfb57, type: 3}
+  Bullet: {fileID: 4241431931795224105, guid: 030a2d2acdbe70b4087c2dbce4064e8d, type: 3}
+  _timeBetweenShooting: 0.2
+  _bulletsCount: 3

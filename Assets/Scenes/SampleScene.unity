@@ -1290,8 +1290,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390603501}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.28, y: -3.15, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.2800293, y: -3.1500244, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1312,7 +1312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 10
-  _weapons: []
+  _weapons:
+  - {fileID: 5708504137410628674, guid: 230a38e4363ef574e99f699ce2e4a3a5, type: 3}
   _shootPoint: {fileID: 1099732789}
 --- !u!1 &399274317
 GameObject:
@@ -3455,7 +3456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapons:
-  - {fileID: 5708504137410628674, guid: 230a38e4363ef574e99f699ce2e4a3a5, type: 3}
   - {fileID: -875506132305381747, guid: b91f4e2d176bcb241a35ebb6c9516b24, type: 3}
   - {fileID: 3005091560534078546, guid: d12ac6b12024b3d448e440d999ba423e, type: 3}
   _player: {fileID: 390603505}
@@ -5286,10 +5286,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
-  - Template: {fileID: 1485821549044212783, guid: 724f555e105432845baa4b0b184839a8, type: 3}
+  - Templates:
+    - {fileID: 1485821549044212783, guid: 724f555e105432845baa4b0b184839a8, type: 3}
     Delay: 1
     Count: 3
-  - Template: {fileID: 1485821549044212783, guid: 724f555e105432845baa4b0b184839a8, type: 3}
+  - Templates:
+    - {fileID: 1485821549044212783, guid: 724f555e105432845baa4b0b184839a8, type: 3}
+    - {fileID: 9089417531148987261, guid: 25c2aa274894e2048984aefd6013010d, type: 3}
     Delay: 0.6
     Count: 10
   _spawnPoint: {fileID: 1691424408}
